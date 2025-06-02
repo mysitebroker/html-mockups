@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRPY Suites - Luxury Barbershop Tampa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 8rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 3rem;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 1px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 100;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 300;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background: var(--black);
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: none;
+            font-weight: 300;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: left 0.4s ease;
+            z-index: 1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            color: var(--black);
+            border: 1px solid var(--black);
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            transition: color 0.4s ease;
+        }
+
+        .cta-button:hover span {
+            color: var(--black);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 1px;
+            background: var(--black);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: var(--white);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0.7;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 8vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .hero-title .italic {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            line-height: 1.8;
+            font-weight: 300;
+            opacity: 0.8;
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            background: transparent;
+            color: var(--black);
+            padding: 1.5rem 3rem;
+            border: 1px solid var(--black);
+            font-size: 0.9rem;
+            font-weight: 300;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            transition: left 0.4s ease;
+            z-index: 1;
+        }
+
+        .hero-cta:hover::before {
+            left: 0;
+        }
+
+        .hero-cta:hover {
+            color: var(--white);
+        }
+
+        .hero-cta span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 0, 0, 0.1) 70%);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0.6;
+            cursor: pointer;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 60px;
+            background: var(--black);
+            margin: 1rem auto 0;
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0%, 100% { height: 60px; opacity: 0.3; }
+            50% { height: 80px; opacity: 1; }
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--gray-100);
+            position: relative;
+        }
+
+        .philosophy-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-number {
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+            font-weight: 300;
+        }
+
+        .section-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.1;
+        }
+
+        .philosophy-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .philosophy-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-top: 3rem;
+            opacity: 0.6;
+            font-weight: 300;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--white);
+        }
+
+        .services-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 6rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .service-item {
+            padding: 4rem;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            transition: left 0.4s ease;
+            z-index: 1;
+        }
+
+        .service-item:hover::before {
+            left: 0;
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-number {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+            font-weight: 300;
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .service-description {
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .service-price {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .service-link {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 0.2rem;
+            font-weight: 300;
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--gray-100);
+        }
+
+        .team-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 6rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .team-member {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+        }
+
+        .member-image {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.6s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .member-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 2rem;
+            color: var(--white);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .team-member:hover .member-overlay {
+            transform: translateY(0);
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .member-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 300;
+        }
+
+        .member-book {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--white);
+            text-decoration: none;
+            border-bottom: 1px solid var(--white);
+            padding-bottom: 0.2rem;
+            font-weight: 300;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--white);
+        }
+
+        .gallery-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 6rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            color: var(--white);
+            text-align: center;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 300;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 6rem;
+        }
+
+        .testimonials-header .section-title {
+            color: var(--white);
+        }
+
+        .testimonials-header .section-number {
+            color: var(--white);
+            opacity: 0.5;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+
+        .testimonial {
+            min-width: 100%;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .testimonial-quote {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .testimonial-author {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.6;
+            font-weight: 300;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--white);
+            width: 30px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            padding-top: 2rem;
+        }
+
+        .contact-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.1;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .contact-details {
+            margin-bottom: 4rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+            opacity: 0.6;
+            font-weight: 300;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .contact-form {
+            background: var(--gray-100);
+            padding: 4rem;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 300;
+            opacity: 0.7;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1.5rem 0;
+            border: none;
+            border-bottom: 1px solid var(--gray-300);
+            background: transparent;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-bottom-color: var(--black);
+        }
+
+        .form-control::placeholder {
+            color: var(--gray-500);
+            font-weight: 300;
+        }
+
+        .submit-btn {
+            background: var(--black);
+            color: var(--white);
+            padding: 1.5rem 3rem;
+            border: none;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: left 0.4s ease;
+            z-index: 1;
+        }
+
+        .submit-btn:hover::before {
+            left: 0;
+        }
+
+        .submit-btn:hover {
+            color: var(--black);
+            border: 1px solid var(--black);
+        }
+
+        .submit-btn span {
+            position: relative;
+            z-index: 2;
+            color: inherit;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 6rem 0 3rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            font-weight: 100;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .footer-about {
+            line-height: 1.8;
+            opacity: 0.7;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .footer-social-link:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .footer-title {
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 300;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.7;
+            text-decoration: none;
+            font-weight: 300;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+            margin-bottom: 0.3rem;
+            font-weight: 300;
+        }
+
+        .footer-contact-value {
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.5;
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .section {
+                padding: 5rem 0;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--black);
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">THRPY</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="cta-button"><span>Reserve</span></a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <p class="hero-subtitle">Tampa's Finest</p>
+                <h1 class="hero-title serif">The Art of <span class="italic">Refinement</span></h1>
+                <p class="hero-description">Where precision meets artistry. Experience the epitome of luxury grooming in an environment crafted for the discerning gentleman.</p>
+                <a href="#contact" class="hero-cta"><span>Book Experience</span></a>
+            </div>
+            <div class="hero-image">
+                <img src="/placeholder.svg?height=800&width=600&query=luxury+barbershop+black+white+elegant+interior" alt="THRPY Suites">
+            </div>
+        </div>
+        <div class="scroll-indicator">Scroll</div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="section philosophy" id="philosophy">
+        <div class="container philosophy-container">
+            <p class="section-number">01</p>
+            <h2 class="section-title serif">Our Philosophy</h2>
+            <p class="philosophy-text">At THRPY Suites, we believe that grooming is an art form—a ritual that transcends the ordinary and elevates the everyday. Our approach combines time-honored traditions with contemporary precision, creating an experience that is both timeless and thoroughly modern.</p>
+            <p class="philosophy-text">Every detail has been meticulously considered, from the selection of our master craftsmen to the curation of our premium products. We don't simply cut hair; we sculpt confidence, refine character, and honor the gentleman's pursuit of excellence.</p>
+            <p class="philosophy-quote serif">"Excellence is never an accident. It is always the result of high intention, sincere effort, and intelligent execution."</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="services-header">
+                <p class="section-number">02</p>
+                <h2 class="section-title serif">Services</h2>
+                <p>Each service is a carefully orchestrated experience, designed to deliver not just exceptional results, but a moment of refined luxury in your day.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-content">
+                        <p class="service-number">01</p>
+                        <h3 class="service-title serif">The Signature</h3>
+                        <p class="service-description">Our master barbers craft a precision cut tailored to your unique features, lifestyle, and personal aesthetic. Includes consultation, wash, cut, and styling.</p>
+                        <p class="service-price">$75</p>
+                        <a href="#contact" class="service-link">Reserve</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-content">
+                        <p class="service-number">02</p>
+                        <h3 class="service-title serif">The Traditional</h3>
+                        <p class="service-description">A classic straight razor shave performed with time-honored techniques. Hot towels, premium creams, and meticulous attention to detail.</p>
+                        <p class="service-price">$65</p>
+                        <a href="#contact" class="service-link">Reserve</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-content">
+                        <p class="service-number">03</p>
+                        <h3 class="service-title serif">The Refinement</h3>
+                        <p class="service-description">Expert beard sculpting and grooming with premium oils and conditioning treatments. Precision trimming to enhance your natural features.</p>
+                        <p class="service-price">$55</p>
+                        <a href="#contact" class="service-link">Reserve</a>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-content">
+                        <p class="service-number">04</p>
+                        <h3 class="service-title serif">The Complete</h3>
+                        <p class="service-description">Our comprehensive grooming experience. Includes precision cut, traditional shave, beard grooming, scalp treatment, and styling.</p>
+                        <p class="service-price">$165</p>
+                        <a href="#contact" class="service-link">Reserve</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team" id="team">
+        <div class="container">
+            <div class="team-header">
+                <p class="section-number">03</p>
+                <h2 class="section-title serif">Master Craftsmen</h2>
+                <p>Our team represents the pinnacle of barbering artistry. Each master craftsman brings decades of experience and an unwavering commitment to excellence.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=600&width=400&query=master+barber+portrait+black+white+professional" alt="Alessandro Moretti">
+                    </div>
+                    <div class="member-overlay">
+                        <h3 class="member-name serif">Alessandro Moretti</h3>
+                        <p class="member-title">Master Barber</p>
+                        <a href="#contact" class="member-book">Book Session</a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=600&width=400&query=female+barber+stylist+portrait+elegant+professional" alt="Victoria Chen">
+                    </div>
+                    <div class="member-overlay">
+                        <h3 class="member-name serif">Victoria Chen</h3>
+                        <p class="member-title">Precision Specialist</p>
+                        <a href="#contact" class="member-book">Book Session</a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=600&width=400&query=beard+specialist+barber+portrait+sophisticated" alt="Marcus Sterling">
+                    </div>
+                    <div class="member-overlay">
+                        <h3 class="member-name serif">Marcus Sterling</h3>
+                        <p class="member-title">Grooming Artisan</p>
+                        <a href="#contact" class="member-book">Book Session</a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=600&width=400&query=young+barber+modern+classic+portrait" alt="Julian Rivera">
+                    </div>
+                    <div class="member-overlay">
+                        <h3 class="member-name serif">Julian Rivera</h3>
+                        <p class="member-title">Style Curator</p>
+                        <a href="#contact" class="member-book">Book Session</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="gallery-header">
+                <p class="section-number">04</p>
+                <h2 class="section-title serif">Portfolio</h2>
+                <p>A curated selection of our finest work, showcasing the artistry and precision that defines the THRPY experience.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=600&width=600&query=luxury+haircut+precision+fade+black+white" alt="Precision Cut">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Precision Cut</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=300&query=straight+razor+shave+traditional+barbershop" alt="Traditional Shave">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Traditional Shave</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=300&query=beard+grooming+luxury+styling" alt="Beard Grooming">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Beard Grooming</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=300&query=classic+pompadour+styling+elegant" alt="Classic Styling">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Classic Styling</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=300&query=modern+textured+cut+professional" alt="Modern Cut">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Modern Cut</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=300&query=luxury+barbershop+tools+premium" alt="Craftsmanship">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Craftsmanship</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <p class="section-number">05</p>
+                <h2 class="section-title serif">Testimonials</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial">
+                        <p class="testimonial-quote serif">"THRPY Suites represents the pinnacle of luxury grooming. The attention to detail and level of craftsmanship is simply unmatched. Every visit is an experience in refinement."</p>
+                        <p class="testimonial-author">— Charles Wellington, CEO</p>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-quote serif">"Alessandro's artistry is extraordinary. He doesn't just cut hair; he sculpts confidence. The atmosphere at THRPY is sophisticated yet welcoming—a true gentleman's retreat."</p>
+                        <p class="testimonial-author">— Michael Harrison, Attorney</p>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-quote serif">"I've traveled the world and experienced the finest barbershops. THRPY Suites stands among the very best. The precision, the service, the ambiance—everything is perfection."</p>
+                        <p class="testimonial-author">— Robert Sterling, Entrepreneur</p>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="nav-dot active" onclick="showTestimonial(0)"></div>
+                    <div class="nav-dot" onclick="showTestimonial(1)"></div>
+                    <div class="nav-dot" onclick="showTestimonial(2)"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2 class="contact-title serif">Reserve Your Experience</h2>
+                <p class="contact-text">Step into a world where grooming becomes art, and every detail is crafted with precision. Schedule your appointment and discover the THRPY difference.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <p class="contact-label">Location</p>
+                        <p class="contact-value">1234 Hyde Park Avenue<br>Tampa, Florida 33606</p>
+                    </div>
+                    <div class="contact-item">
+                        <p class="contact-label">Telephone</p>
+                        <p class="contact-value">(813) 555-8479</p>
+                    </div>
+                    <div class="contact-item">
+                        <p class="contact-label">Hours</p>
+                        <p class="contact-value">Tuesday - Friday: 9:00 - 19:00<br>Saturday: 8:00 - 18:00<br>Sunday - Monday: Closed</p>
+                    </div>
+                    <div class="contact-item">
+                        <p class="contact-label">Email</p>
+                        <p class="contact-value">reservations@thrpysuites.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 class="form-title serif">Appointment Request</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Telephone</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service" class="form-label">Preferred Service</label>
+                        <select id="service" class="form-control" required>
+                            <option value="">Select Service</option>
+                            <option value="signature">The Signature</option>
+                            <option value="traditional">The Traditional</option>
+                            <option value="refinement">The Refinement</option>
+                            <option value="complete">The Complete</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="barber" class="form-label">Preferred Craftsman</label>
+                        <select id="barber" class="form-control">
+                            <option value="">No Preference</option>
+                            <option value="alessandro">Alessandro Moretti</option>
+                            <option value="victoria">Victoria Chen</option>
+                            <option value="marcus">Marcus Sterling</option>
+                            <option value="julian">Julian Rivera</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Additional Notes</label>
+                        <textarea id="message" class="form-control" rows="3" placeholder="Any specific requests or preferences..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn"><span>Submit Request</span></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div>
+                <div class="footer-logo">THRPY SUITES</div>
+                <p class="footer-about">Tampa's premier destination for luxury grooming. Where traditional craftsmanship meets contemporary refinement in an atmosphere of understated elegance.</p>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link">IG</a>
+                    <a href="#" class="footer-social-link">FB</a>
+                    <a href="#" class="footer-social-link">TW</a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-title">Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#services">The Signature</a></li>
+                    <li><a href="#services">The Traditional</a></li>
+                    <li><a href="#services">The Refinement</a></li>
+                    <li><a href="#services">The Complete</a></li>
+                    <li><a href="#contact">Gift Certificates</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Contact</h3>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-label">Address</div>
+                    <div class="footer-contact-value">1234 Hyde Park Avenue<br>Tampa, FL 33606</div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-label">Phone</div>
+                    <div class="footer-contact-value">(813) 555-8479</div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-label">Email</div>
+                    <div class="footer-contact-value">reservations@thrpysuites.com</div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 THRPY Suites. All rights reserved. Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Testimonial slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.nav-dot');
+
+        function showTestimonial(index) {
+            const track = document.getElementById('testimonialTrack');
+            track.style.transform = `translateX(-${index * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentTestimonial = index;
+        }
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 6000);
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your appointment request. We will contact you within 24 hours to confirm your reservation.');
+            this.reset();
+        });
+
+        // Service interactions
+        document.querySelectorAll('.service-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const serviceName = this.closest('.service-item').querySelector('.service-title').textContent;
+                document.getElementById('service').value = serviceName.toLowerCase().replace('the ', '');
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Team member booking
+        document.querySelectorAll('.member-book').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const memberName = this.closest('.team-member').querySelector('.member-name').textContent;
+                const firstName = memberName.split(' ')[0].toLowerCase();
+                document.getElementById('barber').value = firstName;
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.section-title, .service-item, .team-member, .gallery-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image img');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
